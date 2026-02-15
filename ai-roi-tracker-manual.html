@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI ROI Tracker — Field Guide & Manual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .field-card { border-left: 3px solid #2563eb; }
+        .section-divider { border-top: 2px solid #e2e8f0; }
+        @media print { body { font-size: 11px; } .no-print { display: none; } }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+<!-- Header -->
+<header class="bg-white border-b border-slate-200 px-6 py-5">
+    <div class="max-w-4xl mx-auto">
+        <div class="flex items-center gap-3 mb-2">
+            <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <div>
+                <h1 class="text-2xl font-bold text-slate-800">AI ROI Tracker — Field Guide</h1>
+                <p class="text-sm text-slate-500">What every field is asking for and why it matters</p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-6 py-8 space-y-10">
+
+    <!-- TABLE OF CONTENTS -->
+    <nav class="bg-white rounded-xl border border-slate-200 p-6 no-print">
+        <h2 class="text-sm font-bold text-slate-700 uppercase tracking-wide mb-3">Contents</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+            <a href="#new-project" class="text-blue-600 hover:underline">1. New Project — Basic Info</a>
+            <a href="#owner" class="text-blue-600 hover:underline">2. Owner & Phase</a>
+            <a href="#baseline" class="text-blue-600 hover:underline">3. Baseline (Before AI)</a>
+            <a href="#investment" class="text-blue-600 hover:underline">4. AI Investment</a>
+            <a href="#measurements" class="text-blue-600 hover:underline">5. Measurements — Time</a>
+            <a href="#measurement-cost" class="text-blue-600 hover:underline">6. Measurements — Cost</a>
+            <a href="#measurement-revenue" class="text-blue-600 hover:underline">7. Measurements — Revenue</a>
+            <a href="#measurement-quality" class="text-blue-600 hover:underline">8. Measurements — Quality</a>
+            <a href="#settings" class="text-blue-600 hover:underline">9. Settings</a>
+            <a href="#calculations" class="text-blue-600 hover:underline">10. How ROI Is Calculated</a>
+            <a href="#dashboard" class="text-blue-600 hover:underline">11. Reading the Dashboard</a>
+            <a href="#tips" class="text-blue-600 hover:underline">12. Tips for Accurate Tracking</a>
+        </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- SECTION 1: NEW PROJECT — BASIC INFO          -->
+    <!-- ============================================ -->
+    <section id="new-project">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">1. New Project — Basic Info</h2>
+        <p class="text-sm text-slate-500 mb-5">These fields identify what you're testing and why. Found on the <strong>+ Add New</strong> tab.</p>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <div class="flex items-start justify-between">
+                    <h3 class="font-semibold text-slate-800">Project Name *</h3>
+                    <span class="text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full font-medium">Required</span>
+                </div>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> A short, recognizable name for this AI implementation.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> This appears on every card, chart, and export. Make it specific enough that you (or a client) can instantly recall what it refers to.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">Good examples</p>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>"AI Email Drafting — Sales Outreach"</li>
+                        <li>"Meeting Notes Automation"</li>
+                        <li>"SOP Document Generation"</li>
+                    </ul>
+                    <p class="text-xs font-medium text-red-400 uppercase mt-3 mb-1">Avoid</p>
+                    <ul class="text-sm text-slate-500 space-y-1">
+                        <li>"Test 1" — too vague to be useful later</li>
+                        <li>"ChatGPT" — that's the tool, not the project</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Description</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> A 1-2 sentence summary of what this AI implementation does.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Gives context when you revisit the project months later or when showing a client their portfolio. Think of it as the "elevator pitch" for this specific AI use case.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">Example</p>
+                    <p class="text-sm text-slate-700">"Using Claude to draft initial client proposal emails, then editing for tone and accuracy before sending."</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">AI Tool</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> Which AI product or service is being used.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Helps compare ROI across different tools. If you're testing Claude vs. ChatGPT for the same task, you'll want separate projects for each to compare performance.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">Examples</p>
+                    <p class="text-sm text-slate-700">Claude, ChatGPT, Copilot, Otter.ai, Custom GPT, Gemini, Midjourney</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Process Replaced</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> The specific manual or legacy process that this AI is replacing or augmenting.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> This is the "before" in your before/after story. It anchors the ROI calculation — you're comparing the AI way vs. this old way. Be specific about what was being done manually.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">Examples</p>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>"Manual email writing and editing (2-3 drafts per email)"</li>
+                        <li>"Handwritten meeting notes typed up after the meeting"</li>
+                        <li>"Manual data entry from PDFs into spreadsheets"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 2: OWNER & PHASE                     -->
+    <!-- ============================================ -->
+    <section id="owner" class="section-divider pt-10">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">2. Owner & Phase</h2>
+        <p class="text-sm text-slate-500 mb-5">These classify the project so you can filter and present data to the right audience.</p>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Owner: Internal vs. Client</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> Is this an AI tool you're implementing for <em>your own</em> business, or for a <em>client's</em> business?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> The dashboard can filter to show only internal projects or only a specific client's projects. When you're in a coaching session with a client, you filter to their name and present their ROI in isolation — powerful for demonstrating your coaching value.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">When to choose each</p>
+                    <table class="w-full text-sm mt-1">
+                        <tr><td class="py-1 pr-3 font-medium text-slate-700">Internal</td><td class="text-slate-600">AI tools you use to run your business (email, SOPs, scheduling)</td></tr>
+                        <tr><td class="py-1 pr-3 font-medium text-slate-700">Client</td><td class="text-slate-600">AI implementations you're coaching a client through</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Client Name</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> The name of the client this project belongs to. Only shows when Owner = Client.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Enables per-client filtering on the dashboard. You can show "Pam, here's the ROI across all three AI tools we implemented" in a single view.</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Phase</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> Where is this implementation in its lifecycle?</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <table class="w-full text-sm">
+                        <thead><tr class="border-b border-slate-200"><th class="text-left py-2 font-semibold text-slate-700">Phase</th><th class="text-left py-2 font-semibold text-slate-700">What it means</th></tr></thead>
+                        <tbody>
+                            <tr class="border-b border-slate-100">
+                                <td class="py-2 pr-3">
+                                    <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span><strong>Planning</strong></span>
+                                </td>
+                                <td class="py-2 text-slate-600">Evaluating tools, defining the use case, not yet live. No real measurements yet — you're estimating baselines and costs.</td>
+                            </tr>
+                            <tr class="border-b border-slate-100">
+                                <td class="py-2 pr-3">
+                                    <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span><strong>Pilot</strong></span>
+                                </td>
+                                <td class="py-2 text-slate-600">Actively testing the AI tool on a limited scope. This is where you start entering real measurements to see if the tool delivers value.</td>
+                            </tr>
+                            <tr class="border-b border-slate-100">
+                                <td class="py-2 pr-3">
+                                    <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span><strong>Scaling</strong></span>
+                                </td>
+                                <td class="py-2 text-slate-600">Proven value — now expanding to more use cases, more team members, or higher volume. ROI should be clearly positive.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 pr-3">
+                                    <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span><strong>Optimized</strong></span>
+                                </td>
+                                <td class="py-2 text-slate-600">Fully integrated into the workflow. Measurement is about maintaining and improving, not proving value.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Start Date</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> When did (or will) this AI implementation begin?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Used to calculate "months active," which drives breakeven analysis and amortizes one-time costs. Set this to when you first started using the tool, not when you created the project in the tracker.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 3: BASELINE                          -->
+    <!-- ============================================ -->
+    <section id="baseline" class="section-divider pt-10">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">3. Baseline (Before AI)</h2>
+        <p class="text-sm text-slate-500 mb-5">This section captures what life looked like <strong>before</strong> AI. These numbers are the "control group" that every ROI calculation compares against.</p>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-5">
+            <p class="text-sm text-amber-800"><strong>Key concept:</strong> If you don't know the baseline, you can't prove ROI. Spend time getting these numbers right — even rough estimates are better than zeros. Ask: "How long did this take before? What did it cost?"</p>
+        </div>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Hours/week on manual process</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> How many hours per week did this task take using the old, manual way?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> This is the time "before AI." When you later record measurements showing fewer hours, the difference becomes your time savings. This number gets multiplied by the hourly rate to produce a dollar value for time saved.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">How to estimate</p>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>Track yourself for one normal week before starting the AI pilot</li>
+                        <li>If already started, think back: "Last month without AI, how many hours?"</li>
+                        <li>Include all time: doing the task, fixing mistakes, reviewing, etc.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Monthly cost ($)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> What was the total monthly cost of doing this process the old way? This is <em>separate</em> from time — it covers tools, software, outsourcing, materials, etc.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> If AI replaces a $500/mo tool or a $2,000/mo contractor, that's a direct cost savings. This field captures that "before" cost.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">What to include</p>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>Software subscriptions the AI replaces (e.g., old transcription service)</li>
+                        <li>Contractor or freelancer costs for this specific task</li>
+                        <li>Materials, printing, or other direct costs</li>
+                    </ul>
+                    <p class="text-xs font-medium text-slate-500 uppercase mt-3 mb-1">What NOT to include</p>
+                    <ul class="text-sm text-slate-500 space-y-1">
+                        <li>Your own salary — that's captured in "hours" instead</li>
+                        <li>Overhead like rent or internet — too indirect to attribute</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Monthly revenue ($)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> How much revenue was this activity generating per month <em>before</em> AI?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> If AI helps you generate <em>more</em> revenue from the same activity (e.g., better sales emails = more closed deals), this is the "before" number to compare against. If the activity doesn't directly generate revenue, leave this at $0.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">When to use this field</p>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>Sales outreach — revenue from leads contacted manually</li>
+                        <li>Client proposals — value of deals closed from manual proposals</li>
+                        <li>Content marketing — revenue attributable to manual content</li>
+                    </ul>
+                    <p class="text-xs font-medium text-slate-500 uppercase mt-3 mb-1">Leave at $0 when</p>
+                    <ul class="text-sm text-slate-500 space-y-1">
+                        <li>The task is internal (meeting notes, SOPs, data entry)</li>
+                        <li>You can't reasonably attribute revenue to this specific activity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 4: AI INVESTMENT                     -->
+    <!-- ============================================ -->
+    <section id="investment" class="section-divider pt-10">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">4. AI Investment</h2>
+        <p class="text-sm text-slate-500 mb-5">What you're spending to make the AI solution work. This is the "cost" side of the ROI equation.</p>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Monthly tool/subscription cost ($)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> The recurring monthly cost of the AI tool itself.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> This is your ongoing investment. ROI must exceed this cost to be worthwhile. The app uses this to calculate breakeven — how many months until the benefits pay for the tool.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">How to calculate</p>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>If one subscription covers multiple projects, divide proportionally</li>
+                        <li>Example: $20/mo Claude Pro used 50% for email drafting = $10 for that project</li>
+                        <li>Include API costs if applicable (estimate average monthly usage)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">One-time setup cost ($)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> Any upfront cost to get the AI solution working — integrations, custom development, consulting, hardware.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> One-time costs affect breakeven timing. A $5,000 setup cost means you need more months of benefits before you're "in the green." The app amortizes this over the project's lifetime when calculating ROI.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">Examples</p>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li>Custom GPT/agent development: $500-$5,000</li>
+                        <li>API integration with existing tools: $200-$2,000</li>
+                        <li>Consultant setup fees</li>
+                        <li>If no setup was needed, leave at $0</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Training hours</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> How many hours were spent learning the AI tool, creating prompts/workflows, and onboarding team members?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Training time is a real cost that's easy to overlook. This gets multiplied by the hourly rate below to calculate the dollar value of the training investment. Ignoring this makes ROI look artificially high.</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Hourly rate for training ($)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> The blended hourly cost of the people who spent time learning the tool.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Multiplied by training hours to get the total training investment. Defaults to your global hourly rate setting ($75), but you can override it per project — e.g., if a senior exec spent time training, their rate might be higher.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">How to estimate</p>
+                    <p class="text-sm text-slate-700">Use the fully loaded cost (salary + benefits + overhead), not just base pay. A rough formula: annual salary / 2,080 hours. A $100K/yr employee = ~$48/hr base, ~$65-75/hr fully loaded.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 5: MEASUREMENTS — TIME               -->
+    <!-- ============================================ -->
+    <section id="measurements" class="section-divider pt-10">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">5. Measurements — Time</h2>
+        <p class="text-sm text-slate-500 mb-5">Measurements are the ongoing data points you record (weekly or monthly) to track how the AI is actually performing. Found by clicking <strong>"+ Add Measurement"</strong> inside a project's detail view.</p>
+
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-5">
+            <p class="text-sm text-blue-800"><strong>Tip:</strong> Set a recurring calendar reminder (weekly or monthly) to add measurements. Consistent data = accurate ROI. Even 5 minutes of tracking pays off in the story you can tell.</p>
+        </div>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Date</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> The date this measurement covers. Usually the end of the period you're recording.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Drives the timeline on charts. Keeps measurements in order so you can see trends over time.</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Period</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> Does this measurement cover a week or a month?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Helps you interpret the numbers. 10 hours saved per week is very different from 10 hours saved per month. Pick one cadence and stick with it for each project.</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Hours WITH AI</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> How many hours did this task actually take <em>this period</em>, using the AI tool?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> This is the "after" number. The difference between this and "Hours Without AI" = your time savings. Include all time: prompting the AI, reviewing output, editing, etc.</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Hours WITHOUT AI (estimated)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> How many hours would this task have taken <em>this period</em> if you'd done it the old way?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> This is your counterfactual — "what would have happened without AI." It's pre-filled from your project baseline but you can adjust it. If this period had unusual volume (e.g., twice as many emails), increase the estimate accordingly.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">Calculation</p>
+                    <p class="text-sm text-slate-700 font-mono bg-white px-2 py-1 rounded">Time Saved = Hours Without AI - Hours With AI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 6: MEASUREMENTS — COST               -->
+    <!-- ============================================ -->
+    <section id="measurement-cost" class="section-divider pt-10">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">6. Measurements — Cost</h2>
+        <p class="text-sm text-slate-500 mb-5">Track the direct dollar costs with and without AI for this period.</p>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Actual cost this period ($)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> What did it actually cost to perform this task <em>this period</em>, including the AI tool costs and any remaining manual labor costs?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> This is the real-world cost with AI in place. Include the AI subscription/API fees, plus any remaining human labor or tools still needed.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">Example</p>
+                    <p class="text-sm text-slate-700">AI transcription service: $30/mo + remaining manual cleanup labor: $200/mo = <strong>$230</strong> actual cost</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Baseline cost (without AI) ($)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> What would this task have cost <em>this period</em> if done entirely the old way?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Pre-filled from your project baseline. Adjust if this period's workload was different than usual. The difference between baseline and actual = your cost savings.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">Calculation</p>
+                    <p class="text-sm text-slate-700 font-mono bg-white px-2 py-1 rounded">Cost Saved = Baseline Cost - Actual Cost</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 7: MEASUREMENTS — REVENUE            -->
+    <!-- ============================================ -->
+    <section id="measurement-revenue" class="section-divider pt-10">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">7. Measurements — Revenue</h2>
+        <p class="text-sm text-slate-500 mb-5">Track whether AI is helping generate more revenue from this activity.</p>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Actual revenue ($)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> How much revenue did this activity generate <em>this period</em> with AI involved?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Captures the upside — AI doesn't just save money, it can help make money. Better proposals, faster responses, higher-quality outputs can all lead to more revenue.</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Baseline revenue (without AI) ($)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> How much revenue would this activity have generated <em>this period</em> without AI?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Pre-filled from your project baseline. The difference between actual and baseline revenue = your revenue impact from AI.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">Calculation</p>
+                    <p class="text-sm text-slate-700 font-mono bg-white px-2 py-1 rounded">Revenue Impact = Actual Revenue - Baseline Revenue</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 8: MEASUREMENTS — QUALITY            -->
+    <!-- ============================================ -->
+    <section id="measurement-quality" class="section-divider pt-10">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">8. Measurements — Quality & Notes</h2>
+        <p class="text-sm text-slate-500 mb-5">Qualitative data that adds context to the numbers.</p>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Quality Score (1-5)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> Compared to the old manual process, how is the <em>quality</em> of the AI-assisted output?</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <table class="w-full text-sm">
+                        <tr class="border-b border-slate-100"><td class="py-1.5 font-medium">1 — Much Worse</td><td class="text-slate-600">AI output is significantly lower quality, requiring major rework</td></tr>
+                        <tr class="border-b border-slate-100"><td class="py-1.5 font-medium">2 — Slightly Worse</td><td class="text-slate-600">Usable but noticeably not as good as manual work</td></tr>
+                        <tr class="border-b border-slate-100"><td class="py-1.5 font-medium">3 — Same</td><td class="text-slate-600">Equivalent quality to what was produced manually</td></tr>
+                        <tr class="border-b border-slate-100"><td class="py-1.5 font-medium">4 — Better</td><td class="text-slate-600">Quality improvement — more consistent, fewer errors, better formatting</td></tr>
+                        <tr><td class="py-1.5 font-medium">5 — Much Better</td><td class="text-slate-600">Significant quality improvement that wouldn't have been possible manually</td></tr>
+                    </table>
+                </div>
+                <p class="text-sm text-slate-600 mt-3"><strong>Why it matters:</strong> ROI isn't just about speed and cost. If AI saves 5 hours but produces garbage, that's not a win. Quality scores help tell the complete story — especially when presenting to clients.</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Notes</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> What happened this period? Any context that explains the numbers?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Numbers without context are hard to act on. Notes help you remember <em>why</em> a month was good or bad — "Holiday week, lower volume" or "Switched to new prompt template, big improvement."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 9: SETTINGS                          -->
+    <!-- ============================================ -->
+    <section id="settings" class="section-divider pt-10">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">9. Settings</h2>
+        <p class="text-sm text-slate-500 mb-5">Global configuration. Access via the gear icon in the top right.</p>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Default Hourly Rate ($)</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> What is one hour of your (or your team's) time worth?</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> This is the multiplier that converts time savings into dollar value. If you save 10 hours and the rate is $75/hr, that's $750 in value. This single number has a huge impact on your reported ROI — set it honestly.</p>
+                <div class="mt-3 bg-slate-50 rounded-lg p-3">
+                    <p class="text-xs font-medium text-slate-500 uppercase mb-1">How to set it</p>
+                    <ul class="text-sm text-slate-700 space-y-1">
+                        <li><strong>Solo consultant:</strong> Use your billing rate (e.g., $150-300/hr)</li>
+                        <li><strong>Employee time:</strong> Use fully loaded cost (salary + benefits + overhead / 2,080 hrs)</li>
+                        <li><strong>Conservative approach:</strong> Use the lower end of the range — understating ROI is better than overstating it</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Company Name</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it's asking:</strong> Your company name, displayed in the app header.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>Why it matters:</strong> Branding. When you screen-share the dashboard with a client, your company name is visible. Defaults to "4 Pillar Coach, LLC."</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5 field-card">
+                <h3 class="font-semibold text-slate-800">Load Demo Data</h3>
+                <p class="text-sm text-slate-600 mt-2"><strong>What it does:</strong> Populates the app with 4 sample AI projects and measurement history so you can explore the interface without entering real data first.</p>
+                <p class="text-sm text-slate-600 mt-1"><strong>When to use:</strong> Demoing the app to a prospect, learning how it works, or testing before entering real data. Warning: replaces any existing data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 10: HOW ROI IS CALCULATED            -->
+    <!-- ============================================ -->
+    <section id="calculations" class="section-divider pt-10">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">10. How ROI Is Calculated</h2>
+        <p class="text-sm text-slate-500 mb-5">Transparency on the math behind the numbers. Every metric on the dashboard traces back to these formulas.</p>
+
+        <div class="bg-white rounded-xl border border-slate-200 p-6 space-y-6">
+            <div>
+                <h3 class="font-semibold text-slate-800 mb-2">Per Measurement</h3>
+                <div class="bg-slate-50 rounded-lg p-4 space-y-2 font-mono text-sm text-slate-700">
+                    <p><strong>Time Saved</strong> = Hours Without AI - Hours With AI</p>
+                    <p><strong>Time Saved ($)</strong> = Time Saved x Hourly Rate</p>
+                    <p><strong>Cost Saved</strong> = Baseline Cost - Actual Cost</p>
+                    <p><strong>Revenue Impact</strong> = Actual Revenue - Baseline Revenue</p>
+                    <p><strong>Total Benefit</strong> = Time Saved ($) + Cost Saved + Revenue Impact</p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-slate-800 mb-2">Per Project (Aggregate)</h3>
+                <div class="bg-slate-50 rounded-lg p-4 space-y-2 font-mono text-sm text-slate-700">
+                    <p><strong>Total Benefit</strong> = Sum of all measurement benefits</p>
+                    <p><strong>Total Investment</strong> = Setup Cost + (Training Hrs x Training Rate) + (Monthly Tool Cost x Months Active)</p>
+                    <p><strong>Net ROI</strong> = Total Benefit - Total Investment</p>
+                    <p><strong>ROI %</strong> = (Net ROI / Total Investment) x 100</p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-slate-800 mb-2">Breakeven Analysis</h3>
+                <div class="bg-slate-50 rounded-lg p-4 space-y-2 font-mono text-sm text-slate-700">
+                    <p><strong>Monthly Benefit</strong> = Total Benefit / Months Active</p>
+                    <p><strong>Monthly Net Benefit</strong> = Monthly Benefit - Monthly Tool Cost</p>
+                    <p><strong>One-Time Costs</strong> = Setup Cost + (Training Hrs x Training Rate)</p>
+                    <p><strong>Breakeven (months)</strong> = One-Time Costs / Monthly Net Benefit</p>
+                </div>
+                <p class="text-sm text-slate-600 mt-3">If the breakeven number is less than your months active, you've already recouped your investment and are generating net value.</p>
+            </div>
+
+            <div>
+                <h3 class="font-semibold text-slate-800 mb-2">Dashboard Totals</h3>
+                <p class="text-sm text-slate-600">All dashboard KPI cards are simply the sum across all filtered projects. The "Overall ROI %" is calculated as:</p>
+                <div class="bg-slate-50 rounded-lg p-4 mt-2 font-mono text-sm text-slate-700">
+                    <p><strong>Overall ROI %</strong> = (Sum of All Net ROI / Sum of All Investment) x 100</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 11: READING THE DASHBOARD            -->
+    <!-- ============================================ -->
+    <section id="dashboard" class="section-divider pt-10">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">11. Reading the Dashboard</h2>
+        <p class="text-sm text-slate-500 mb-5">What each dashboard element tells you at a glance.</p>
+
+        <div class="space-y-4">
+            <div class="bg-white rounded-lg border border-slate-200 p-5">
+                <h3 class="font-semibold text-slate-800">KPI Cards (top row)</h3>
+                <table class="w-full text-sm mt-3">
+                    <tr class="border-b border-slate-100"><td class="py-2 pr-3 font-medium text-blue-600">Hours Saved</td><td class="text-slate-600">Total hours reclaimed from manual work across all projects. This is time your team gets back.</td></tr>
+                    <tr class="border-b border-slate-100"><td class="py-2 pr-3 font-medium text-emerald-600">Cost Saved</td><td class="text-slate-600">Direct dollar savings from reduced tool costs, contractor fees, etc. Does NOT include monetized time.</td></tr>
+                    <tr class="border-b border-slate-100"><td class="py-2 pr-3 font-medium text-amber-600">Revenue Impact</td><td class="text-slate-600">Additional revenue generated because of AI. Only shows if you're tracking revenue metrics.</td></tr>
+                    <tr><td class="py-2 pr-3 font-medium text-emerald-600">Overall ROI %</td><td class="text-slate-600">The big number. Green = positive return. Above 100% means you've more than doubled your investment.</td></tr>
+                </table>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5">
+                <h3 class="font-semibold text-slate-800">ROI Trend Chart</h3>
+                <p class="text-sm text-slate-600 mt-2">Shows cumulative benefit over time, per project. Lines going up = growing value. Flat or declining lines = the AI tool may need re-evaluation.</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5">
+                <h3 class="font-semibold text-slate-800">Savings Breakdown (Donut)</h3>
+                <p class="text-sm text-slate-600 mt-2">Shows the proportion of value from each category: time savings (blue), cost savings (green), revenue impact (amber). Helps answer: "Where is AI creating the most value?"</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5">
+                <h3 class="font-semibold text-slate-800">Implementation Pipeline</h3>
+                <p class="text-sm text-slate-600 mt-2">Horizontal bar showing how many projects are in each phase. A healthy pipeline has projects distributed across phases, not all stuck in "Planning."</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5">
+                <h3 class="font-semibold text-slate-800">Top Performers</h3>
+                <p class="text-sm text-slate-600 mt-2">Projects ranked by ROI %. Your best-performing AI implementations rise to the top. Use this to identify what's working and replicate it.</p>
+            </div>
+
+            <div class="bg-white rounded-lg border border-slate-200 p-5">
+                <h3 class="font-semibold text-slate-800">Filters</h3>
+                <p class="text-sm text-slate-600 mt-2">Switch between "All Projects," "Internal Only," or "Client Only" to change what the dashboard displays. When set to Client, a second dropdown lets you select a specific client — perfect for 1-on-1 coaching sessions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 12: TIPS                             -->
+    <!-- ============================================ -->
+    <section id="tips" class="section-divider pt-10 pb-16">
+        <h2 class="text-xl font-bold text-slate-800 mb-1">12. Tips for Accurate Tracking</h2>
+        <p class="text-sm text-slate-500 mb-5">Getting the most out of this tool.</p>
+
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+            <div class="space-y-5">
+                <div class="flex gap-3">
+                    <span class="text-lg font-bold text-brand-600 shrink-0">1.</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Measure the baseline BEFORE you start</p>
+                        <p class="text-sm text-slate-600">Spend 1-2 weeks tracking the old process before implementing AI. Time yourself, record costs. This makes your "after" comparison credible.</p>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-lg font-bold text-brand-600 shrink-0">2.</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Be consistent with measurement cadence</p>
+                        <p class="text-sm text-slate-600">Pick weekly or monthly and stick with it. Mixing periods within a project makes trends hard to read.</p>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-lg font-bold text-brand-600 shrink-0">3.</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Be honest with estimates</p>
+                        <p class="text-sm text-slate-600">It's tempting to inflate "hours without AI" to make ROI look better. Resist this — credibility is more valuable than impressive numbers, especially with clients.</p>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-lg font-bold text-brand-600 shrink-0">4.</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Use notes religiously</p>
+                        <p class="text-sm text-slate-600">Future-you will thank present-you. "Why did cost savings drop in March?" Your notes will have the answer.</p>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-lg font-bold text-brand-600 shrink-0">5.</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Export regularly</p>
+                        <p class="text-sm text-slate-600">Data lives in your browser's localStorage. Export a JSON backup weekly. If you clear browser data, your projects are gone unless you have a backup.</p>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-lg font-bold text-brand-600 shrink-0">6.</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">One project per AI use case</p>
+                        <p class="text-sm text-slate-600">Don't lump "Claude for emails" and "Claude for SOPs" into one project. Different use cases have different ROI profiles and should be tracked separately.</p>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-lg font-bold text-brand-600 shrink-0">7.</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Update phases as you progress</p>
+                        <p class="text-sm text-slate-600">Move projects from Planning to Pilot to Scaling to Optimized as they mature. The pipeline chart on the dashboard tells a powerful story about your AI maturity.</p>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <span class="text-lg font-bold text-brand-600 shrink-0">8.</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Use it in client sessions</p>
+                        <p class="text-sm text-slate-600">Filter the dashboard to a specific client before a coaching call. Screen-share and walk them through their ROI. This is one of the strongest retention and upsell tools in your coaching toolkit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-white border-t border-slate-200 py-4 px-6 text-center">
+    <p class="text-xs text-slate-400">AI ROI Tracker Field Guide — 4 Pillar Coach, LLC</p>
+</footer>
+
+</body>
+</html>
